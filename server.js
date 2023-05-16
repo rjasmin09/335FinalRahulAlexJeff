@@ -104,7 +104,8 @@ app.post("/recommendations", async (req, res)  =>  {
             rec2: recs[1],
             rec3: recs[2],
             rec4: recs[3],
-            rec5: recs[4]
+            rec5: recs[4],
+            name: req.body.playlist
         }
 
         const uri = `mongodb+srv://${username}:${password}@cluster0.yk8irim.mongodb.net/?retryWrites=true&w=majority`
