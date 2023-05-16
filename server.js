@@ -48,6 +48,10 @@ app.use(bodyParser.urlencoded({extended:false}));
 //       }
 // });
 
+app.get("/playlists", (req, res) => {
+    res.render("playlists");
+});
+
 app.get("/recommendations", (req, res) => { 
     res.sendFile( __dirname + '/recommendations.html');
 });
