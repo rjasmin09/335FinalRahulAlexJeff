@@ -33,7 +33,7 @@ app.get("/playlist", async(req, res) => {
 });
 
 app.get("/recommendations", (req, res) => { 
-    res.render("recommendations");
+    res.render("recommendSongs");
 });
 
 app.post("/recommendations", async (req, res)  =>  { 
