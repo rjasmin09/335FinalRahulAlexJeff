@@ -70,6 +70,10 @@ app.post("/recommendations", async (req, res)  =>  {
             },
         });
 
+        if (artist1.data.artists.items.length == 0) {
+            res.render("invalid", {field: "artist"});
+            return;
+        }
         id_artist = artist1.data.artists.items[0].id 
 
         q = `track:${req.body.track}+artist:${req.body.songArtist}`
@@ -81,6 +85,10 @@ app.post("/recommendations", async (req, res)  =>  {
             },
         });
 
+        if (track1.data.tracks.items.length == 0) {
+            res.render("invalid", {field: "track"});
+            return;
+        }
         id_track = track1.data.tracks.items[0].id;
         
         const recommendations = await axios.get(`https://api.spotify.com/v1/recommendations?seed_artists=${id_artist}&seed_genres=${req.body.genre}&seed_tracks=${id_track}&limit=${limit}`, 
@@ -90,10 +98,15 @@ app.post("/recommendations", async (req, res)  =>  {
             },
         });
 
+        // if (recommendations.data.tracks.length == 0) {
+        //     res.render("invalid", {field: "genre"});
+        //     return;
+        // }
+
         recs = new Array(limit);
         artists = new Array(limit);
         let rec = null;
-        for (let i = 0; i < limit; i++ ){ 
+        for (let i = 0; i < limit; i++){ 
             rec = recommendations.data.tracks[i];
             artists[i] = rec.artists[0].name;
             recs[i] = `${rec.name} by ${artists[i]}`;
