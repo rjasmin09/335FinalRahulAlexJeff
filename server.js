@@ -23,33 +23,6 @@ app.get("/", (req, res) => {
 });
 app.use(bodyParser.urlencoded({extended:false}));
 
-// app.get("/planTrip", (req, res) => { 
-//     res.sendFile( __dirname + '/planTrip.html');
-// });
-
-// app.post("/planTrip", async (req, res) => {
-//     const options = {
-//         method: 'GET',
-//         url: 'https://ai-trip-planner.p.rapidapi.com/',
-//         params: {
-//           days: req.body.days,
-//           destination: req.body.destination
-//         },
-//         headers: {
-//           'X-RapidAPI-Key': 'd42dbf8407mshd9237b84370de00p174b08jsndf9a6e1810c2',
-//           'X-RapidAPI-Host': 'ai-trip-planner.p.rapidapi.com'
-//         }
-//       };
-      
-//       try {
-//           const response = await axios.request(options);
-//           console.log(response.data);
-//           res.send(response.data);
-//       } catch (error) {
-//           console.error(error);
-//       }
-// });
-
 app.get("/playlists", async (req, res) => {
     const playlists = await queryPlaylists(client, databaseAndCollection);
     res.render("playlists", { playlists });
