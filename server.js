@@ -26,6 +26,11 @@ app.get("/playlists", async (req, res) => {
     res.render("playlists", { playlists });
 });
 
+app.get("/playlist", async(req, res) => {
+    const playlist = await queryPlaylist(client, databaseAndCollection, req.query.name);
+    res.render("playlist", { playlist })
+});
+
 app.get("/recommendations", (req, res) => { 
     res.sendFile( __dirname + '/recommendations.html');
 });
@@ -160,6 +165,13 @@ async function insertPlayList(client, databaseAndCollection, playList) {
 //                    .deleteMany({});
 //     return result.deletedCount;
 // }
+
+async function queryPlaylist(client, databaseAndCollection, name) {
+    let filter = { name: name };
+    return await client.db(databaseAndCollection.db)
+        .collection(databaseAndCollection.collection)
+       .findOne(filter);
+}
 
 async function queryPlaylists(client, databaseAndCollection) {
     return await client.db(databaseAndCollection.db)
