@@ -87,10 +87,12 @@ app.post("/recommendations", async (req, res)  =>  {
         });
 
         recs = new Array(limit);
+        artists = new Array(limit);
         let rec = null;
         for (let i = 0; i < limit; i++ ){ 
             rec = recommendations.data.tracks[i];
-            recs[i] = `${rec.type}: ${rec.name}`;
+            artists[i] = rec.artists[0].name;
+            recs[i] = `${rec.type}: ${rec.name} by ${artists[i]}`;
         }
 
         variables = { 
