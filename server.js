@@ -59,7 +59,7 @@ app.post("/recommendations", async (req, res)  =>  {
 
     try {
         const limit = 5;
-        let q = `artist%3A${req.body.artist}`; // %3A is a colon
+        let q = `artist:${req.body.artist}`; 
         let type = "artist";
         const artist1 = await axios.get(`https://api.spotify.com/v1/search?q=${q}&type=${type}`, 
         {
@@ -70,7 +70,7 @@ app.post("/recommendations", async (req, res)  =>  {
 
         id_artist = artist1.data.artists.items[0].id 
 
-        q = `track%3A${req.body.track}+artist%3A${req.body.songArtist}`
+        q = `track:${req.body.track}+artist:${req.body.songArtist}`
         type = "track"
         const track1 = await axios.get(`https://api.spotify.com/v1/search?q=${q}&type=${type}`, 
         {
@@ -112,7 +112,7 @@ app.post("/recommendations", async (req, res)  =>  {
 
 async function getToken() {
     try {
-        const data = qs.stringify({'grant_type':'client_credentials'});
+        const data = "grant_type=client_credentials";
 
         const response = await axios.post('https://accounts.spotify.com/api/token', 
         data, {
