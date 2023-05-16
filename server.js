@@ -102,7 +102,24 @@ app.post("/recommendations", async (req, res)  =>  {
             rec4: recs[3],
             rec5: recs[4]
         }
-        res.render("recommendations", variables);
+
+        const uri = `mongodb+srv://${username}:${password}@cluster0.yk8irim.mongodb.net/?retryWrites=true&w=majority`
+        const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+        try {
+            await client.connect();
+            let playList = {
+                name: req.body.playlist,
+                songs: recs
+            };
+            await insertPlayList(client, databaseAndCollection, playList);
+            res.render("recommendations", variables);
+        } catch (e) {
+            console.error(e);
+        } finally {
+            await client.close();
+        }
+
+        
     }
     catch(error) {
         console.log(error);
@@ -142,22 +159,22 @@ app.listen(portNumber, (err) => {
     }
 });
 
-async function insertTripDetails(client, databaseAndCollection, trip) {
-    const result = await client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).insertOne(trip);
+async function insertPlayList(client, databaseAndCollection, playList) {
+    const result = await client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).insertOne(playList);
     return result;
 }
 
-async function lookUpEntry(client, databaseAndCollection, emailAddr) {
-    let filter = {email: emailAddr};
-    const result = await client.db(databaseAndCollection.db)
-                        .collection(databaseAndCollection.collection)
-                        .findOne(filter);
-    return result;
-}
+// async function lookUpEntry(client, databaseAndCollection, emailAddr) {
+//     let filter = {email: emailAddr};
+//     const result = await client.db(databaseAndCollection.db)
+//                         .collection(databaseAndCollection.collection)
+//                         .findOne(filter);
+//     return result;
+// }
 
-async function deleteAll(client, databaseAndCollection) {
-    const result = await client.db(databaseAndCollection.db)
-                   .collection(databaseAndCollection.collection)
-                   .deleteMany({});
-    return result.deletedCount;
-}
+// async function deleteAll(client, databaseAndCollection) {
+//     const result = await client.db(databaseAndCollection.db)
+//                    .collection(databaseAndCollection.collection)
+//                    .deleteMany({});
+//     return result.deletedCount;
+// }
