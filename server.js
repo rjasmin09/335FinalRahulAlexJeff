@@ -33,7 +33,7 @@ app.get("/playlist", async(req, res) => {
 });
 
 app.get("/recommendations", (req, res) => { 
-    res.sendFile( __dirname + '/recommendations.html');
+    res.render("recommendations");
 });
 
 app.post("/recommendations", async (req, res)  =>  { 
@@ -156,6 +156,15 @@ app.listen(portNumber, (err) => {
 });
 
 async function insertPlayList(client, databaseAndCollection, playList) {
+    if (await client.db(databaseAndCollection.db)
+        .collection(databaseAndCollection.collection)
+        .findOne({ name: playlist })) {
+        
+    } else {
+        return await client.db(databaseAndCollection.db)
+            .collection(databaseAndCollection.collection)
+            .insertOne(playlist);
+    }
     const result = await client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).insertOne(playList);
     return result;
 }
