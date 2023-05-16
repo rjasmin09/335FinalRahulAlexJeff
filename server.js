@@ -22,10 +22,6 @@ app.get("/", (req, res) => {
 });
 app.use(bodyParser.urlencoded({extended:false}));
 
-app.get("/test", (req, res) => {
-    response.send("test");
-})
-
 app.get("/ask", async (req, res) => {
     const options = {
         method: 'GET',
@@ -62,8 +58,8 @@ app.listen(portNumber, (err) => {
     }
 });
 
-async function insertApplicant(client, databaseAndCollection, applicant) {
-    const result = await client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).insertOne(applicant);
+async function insertTripDetails(client, databaseAndCollection, trip) {
+    const result = await client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).insertOne(trip);
     return result;
 }
 
@@ -72,15 +68,6 @@ async function lookUpEntry(client, databaseAndCollection, emailAddr) {
     const result = await client.db(databaseAndCollection.db)
                         .collection(databaseAndCollection.collection)
                         .findOne(filter);
-    return result;
-}
-
-async function lookUpGreaterEntries(client, databaseAndCollection, gpaVal) {
-    let filter = {gpa: { $gte: gpaVal}};
-    const cursor = client.db(databaseAndCollection.db)
-    .collection(databaseAndCollection.collection)
-    .find(filter);
-    const result = await cursor.toArray();
     return result;
 }
 
