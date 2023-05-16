@@ -21,6 +21,7 @@ app.use((request, response) => {
     const statusCodeNotFound = 404;
     response.status(statusCodeNotFound).send("Page not found");
 });
+
 app.listen(portNumber, (err) => {
     if(err) {
         console.log("Failed to start server");
@@ -28,7 +29,6 @@ app.listen(portNumber, (err) => {
         console.log(`Web server started at port 3000`);
     }
 });
-
 async function insertApplicant(client, databaseAndCollection, applicant) {
     const result = await client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).insertOne(applicant);
     return result;
