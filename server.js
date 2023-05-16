@@ -2,9 +2,7 @@ const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-const NLPCloudClient = require('nlpcloud');
 const axios = require('axios');
-const qs = require('qs');
 
 require("dotenv").config({ path: path.resolve(__dirname, '.env') });
 const username = process.env.MONGO_DB_USERNAME
