@@ -92,7 +92,7 @@ app.post("/recommendations", async (req, res)  =>  {
         for (let i = 0; i < limit; i++ ){ 
             rec = recommendations.data.tracks[i];
             artists[i] = rec.artists[0].name;
-            recs[i] = `${rec.type}: ${rec.name} by ${artists[i]}`;
+            recs[i] = `${rec.name} by ${artists[i]}`;
         }
 
         variables = { 
@@ -103,7 +103,6 @@ app.post("/recommendations", async (req, res)  =>  {
             rec5: recs[4]
         }
         res.render("recommendations", variables);
-        // recommendations.data.tracks.forEach(rec => console.log(`${rec.type}: ${rec.name}`));
     }
     catch(error) {
         console.log(error);
