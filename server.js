@@ -20,6 +20,7 @@ app.get("/", (req, res) => {
     res.render("index");
 });
 app.use(bodyParser.urlencoded({extended:false}));
+app.use(express.static(__dirname + '/assets'));
 
 app.get("/playlists", async (req, res) => {
     const playlists = await queryPlaylists(client, databaseAndCollection);
