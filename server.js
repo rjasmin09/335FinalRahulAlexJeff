@@ -171,7 +171,7 @@ async function queryPlaylist(client, databaseAndCollection, name) {
     let filter = { name: name };
     return await client.db(databaseAndCollection.db)
         .collection(databaseAndCollection.collection)
-       .findOne(filter);
+        .findOne(filter);
 }
 
 async function queryPlaylists(client, databaseAndCollection) {
