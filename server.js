@@ -13,8 +13,6 @@ const portNumber = 3000;
 const uri = `mongodb+srv://${username}:${password}@cluster0.yk8irim.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
-// const client = new NLPCloudClient('fast-gpt-j','30676e161f5b57f8e001deaab18d3db69c0701cd');
-
 // express
 app.set("views", path.resolve(__dirname, "templates"));
 app.set("view engine", "ejs");
@@ -155,14 +153,6 @@ async function insertPlayList(client, databaseAndCollection, playList) {
     const result = await client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).insertOne(playList);
     return result;
 }
-
-// async function lookUpEntry(client, databaseAndCollection, emailAddr) {
-//     let filter = {email: emailAddr};
-//     const result = await client.db(databaseAndCollection.db)
-//                         .collection(databaseAndCollection.collection)
-//                         .findOne(filter);
-//     return result;
-// }
 
 // async function deleteAll(client, databaseAndCollection) {
 //     const result = await client.db(databaseAndCollection.db)
