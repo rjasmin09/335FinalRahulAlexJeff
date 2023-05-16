@@ -2,7 +2,6 @@ const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-const prompt = "ctrl c to shutdown the server: ";
 require("dotenv").config({ path: path.resolve(__dirname, '.env') });
 const username = process.env.MONGO_DB_USERNAME
 const password = process.env.MONGO_DB_PASSWORD
@@ -26,8 +25,7 @@ app.listen(portNumber, (err) => {
     if(err) {
         console.log("Failed to start server");
     } else {
-        console.log(`Web server started and running at http://localhost:${portNumber}`);
-        process.stdout.write(prompt);
+        console.log(`Web server started at port 3000`);
     }
 });
 
