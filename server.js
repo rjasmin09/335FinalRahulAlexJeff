@@ -10,6 +10,8 @@ const password = process.env.MONGO_DB_PASSWORD
 const databaseAndCollection = {db: "CMSC335_DB", collection: "final335"};
 const { MongoClient, ServerApiVersion, Int32 } = require('mongodb');
 const portNumber = 3000;
+const uri = `mongodb+srv://${username}:${password}@cluster0.yk8irim.mongodb.net/?retryWrites=true&w=majority`;
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 // const client = new NLPCloudClient('fast-gpt-j','30676e161f5b57f8e001deaab18d3db69c0701cd');
 
@@ -48,8 +50,9 @@ app.use(bodyParser.urlencoded({extended:false}));
 //       }
 // });
 
-app.get("/playlists", (req, res) => {
-    res.render("playlists");
+app.get("/playlists", async (req, res) => {
+    const playlists = await queryPlaylists(client, databaseAndCollection);
+    res.render("playlists", { playlists });
 });
 
 app.get("/recommendations", (req, res) => { 
@@ -121,8 +124,6 @@ app.post("/recommendations", async (req, res)  =>  {
             name: req.body.playlist
         }
 
-        const uri = `mongodb+srv://${username}:${password}@cluster0.yk8irim.mongodb.net/?retryWrites=true&w=majority`
-        const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
         try {
             await client.connect();
             let playList = {
@@ -196,3 +197,10 @@ async function insertPlayList(client, databaseAndCollection, playList) {
 //                    .deleteMany({});
 //     return result.deletedCount;
 // }
+
+async function queryPlaylists(client, databaseAndCollection) {
+    return await client.db(databaseAndCollection.db)
+        .collection(databaseAndCollection.collection)
+        .find({}, { name: 1 })
+        .toArray();
+}

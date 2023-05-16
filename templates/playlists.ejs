@@ -10,10 +10,9 @@
     <h1>Playlists</h1>
 
     <ul>
-        <li>Playlist 1</li>
-        <li>Playlist 2</li>
-        <li>Playlist 3</li>
-        <li>Playlist 4</li>
+        <% for (let i = 0; i < playlists.length; i++) { %>
+            <li><%= playlists[i].name %></li>
+        <% } %>
     </ul>
 </body>
 </html>
