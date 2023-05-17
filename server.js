@@ -23,13 +23,27 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static(__dirname + '/assets'));
 
 app.get("/playlists", async (req, res) => {
-    const playlists = await queryPlaylists(client, databaseAndCollection);
-    res.render("playlists", { playlists });
+    try {
+        await client.connect();
+        const playlists = await queryPlaylists(client, databaseAndCollection);
+        res.render("playlists", { playlists });
+    } catch (e) {
+        console.error(e);
+    } finally {
+        await client.close();
+    } 
 });
 
 app.get("/playlist", async(req, res) => {
-    const playlist = await queryPlaylist(client, databaseAndCollection, req.query.name);
-    res.render("playlist", { playlist })
+    try {
+        await client.connect();
+        const playlist = await queryPlaylist(client, databaseAndCollection, req.query.name);
+        res.render("playlist", { playlist });
+    } catch (e) {
+        console.error(e);
+    } finally {
+        await client.close();
+    }
 });
 
 app.get("/recommendations", (req, res) => { 
@@ -155,18 +169,12 @@ app.listen(portNumber, (err) => {
     }
 });
 
-async function insertPlayList(client, databaseAndCollection, playList) {
-    if (await client.db(databaseAndCollection.db)
+async function insertPlayList(client, databaseAndCollection, playlist) {
+    const filter = { name: playlist.name };
+    const options = { upsert : true };
+    return await client.db(databaseAndCollection.db)
         .collection(databaseAndCollection.collection)
-        .findOne({ name: playlist })) {
-        
-    } else {
-        return await client.db(databaseAndCollection.db)
-            .collection(databaseAndCollection.collection)
-            .insertOne(playlist);
-    }
-    const result = await client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).insertOne(playList);
-    return result;
+        .replaceOne(filter, playlist, options);
 }
 
 // async function deleteAll(client, databaseAndCollection) {
