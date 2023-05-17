@@ -3,7 +3,7 @@
 ## Team members: 
 Rahul Jasmin (rjasmin)
 Alexander Cook (acook126)
-Jeffrey (jjiang14)
+Jeffrey Jiang (jjiang14)
 
 ## Description:
 This app uses the Spotify API to create public playlists of song recommendations based off a given song.
@@ -17,4 +17,4 @@ https://developer.spotify.com/documentation/web-api
 
 
 ## YouTube Link:
-
+https://www.youtube.com/watch?v=d005_deXmec
