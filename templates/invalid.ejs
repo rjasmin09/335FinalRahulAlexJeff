@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/style.css" rel="stylesheet" type="text/css">
-    <title>Invalid</title>
-</head>
-<body>
-    <div class="top-bar">
-        <a href="/">Home</a>
-        <a href="/recommendations">Get Song Recommendations</a>
-        <a href="/playlists">Public Playlists</a>
-    </div>
-    <div>
-        <h1>MusicFYP</h1>
-    </div>
-    <h2>Invalid <%- field %></h2>
-    <p>Check if the information you provided is correct and try again.</p>
-
-    <form>
-        <input type="button" value="Go back" onclick="history.back()">
-    </form>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/style.css" rel="stylesheet" type="text/css">
+        <title>Invalid</title>
+    </head>
+    <body>
+        <div class="main">
+            <div class="top-bar">
+                <a href="/">Home</a>
+                <a href="/recommendations">Get Song Recommendations</a>
+                <a href="/playlists">Public Playlists</a>
+            </div>
+            <div>
+                <h1>MusicFYP</h1>
+            </div>
+            <h2>Invalid <%- field %></h2>
+            <p>Check if the information you provided is correct and try again.</p>
+        
+            <form>
+                <input class="btn" type="button" value="Go back" onclick="history.back()">
+            </form>
+        </div>
+    </body>
 </html>

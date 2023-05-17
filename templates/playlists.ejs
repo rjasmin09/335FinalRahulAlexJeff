@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/style.css" rel="stylesheet" type="text/css">
-    <title>Public Playlists</title>
-</head>
-<body>
-    <div class="top-bar">
-        <a href="/">Home</a>
-        <a href="/recommendations">Get Song Recommendations</a>
-        <a class="active" href="/playlists">Public Playlists</a>
-    </div>
-    <div>
-        <h1>MusicFYP</h1>
-    </div>
-    <h2>Playlists</h2>
-
-    <ul>
-        <% for (let i = 0; i < playlists.length; i++) { %>
-            <li>
-                <a class="playListLink" href="/playlist?name=<%= playlists[i].name %>"><%= playlists[i].name %></a>
-            </li>
-        <% } %>
-    </ul>
-
-    <form action="/playlists" method="post">
-        <input type="submit" value="Delete All Playlists">
-    </form>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/style.css" rel="stylesheet" type="text/css">
+        <title>Public Playlists</title>
+    </head>
+    <body>
+        <div class="main">
+            <div class="top-bar">
+                <a href="/">Home</a>
+                <a href="/recommendations">Get Song Recommendations</a>
+                <a class="active" href="/playlists">Public Playlists</a>
+            </div>
+            <div>
+                <h1>MusicFYP</h1>
+            </div>
+            <h2>Playlists</h2>
+    
+            <ul>
+                <% for (let i = 0; i < playlists.length; i++) { %>
+                    <li>
+                        <a class="playListLink" href="/playlist?name=<%= playlists[i].name %>"><%= playlists[i].name %></a>
+                    </li>
+                <% } %>
+            </ul>
+    
+            <form action="/playlists" method="post">
+                <input class="btn" type="submit" value="Delete All">
+            </form>
+    
+        </div>
+    </body>
 </html>

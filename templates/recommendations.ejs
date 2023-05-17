@@ -8,22 +8,24 @@
         <title>Recommendations</title>
     </head>
     <body>
-        <div class="top-bar">
-            <a href="/">Home</a>
-            <a href="/recommendations">Get Song Recommendations</a>
-            <a href="/playlists">Public Playlists</a>
+        <div class="main">
+            <div class="top-bar">
+                <a href="/">Home</a>
+                <a href="/recommendations">Get Song Recommendations</a>
+                <a href="/playlists">Public Playlists</a>
+            </div>
+            <div>
+                <h1>MusicFYP</h1>
+            </div>
+            <br>
+    
+            Added the following songs to the <%- name %> Playlist: 
+            <br>
+            <ul>
+                <% for (let i = 0; i < songs.length; i++) { %>
+                    <li><%= songs[i] %></li>
+                <% } %>
+            </ul>         
         </div>
-        <div>
-            <h1>MusicFYP</h1>
-        </div>
-        <br>
-
-        Added the following songs to the <%- name %> Playlist: 
-        <br>
-        <ul>
-            <% for (let i = 0; i < songs.length; i++) { %>
-                <li><%= songs[i] %></li>
-            <% } %>
-        </ul>     
     </body>
 </html>

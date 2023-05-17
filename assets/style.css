@@ -1,13 +1,23 @@
 body {
     font-family: "Poppins", sans-serif;
-    width: 500px;
-    background-color: #404040;
+    width: 600px;
+    margin: auto;
+    background-color: black;
     color: white;
+}
+
+.main {
+    background-color: #404040;
+    padding-left: 50px;
+    padding-right: 50px;
+    height: 100vh;
 }
 
 .top-bar {
     overflow: hidden;
     background-color: black;
+    width: 473.5px;
+    margin: auto;
 }
 
 .top-bar a {
@@ -55,5 +65,16 @@ h1 {
 }
 
 .playListLink:hover {
+    color: #04AA6D;
+}
+
+.btn {
+    width: 100px;
+    height: 40px;
+    font-size: 15px;
+    border-radius: 8px;
+}
+
+.btn:hover {
     color: #04AA6D;
 }
