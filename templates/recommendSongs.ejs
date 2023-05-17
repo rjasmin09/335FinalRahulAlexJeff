@@ -16,36 +16,36 @@
         <div>
             <h1>MusicFYP</h1>
         </div>
-
-        <h2>Make a playlist of recommendations.</h2>
-
-        <form action="/recommendations" method="post">
-            <label for="artist">Enter your favorite musical artist: </label>
-            <input type="text" id="artist" name="artist">
-
-            <br>
-            <label for="track">Enter your favorite song: </label>
-            <input type="text" id="track" name="track">
-            <label for="songArtist"> By: </label>
-            <input type="text" id="songArtist" name="songArtist">
-
-            <br>
-            <label for="genre">Enter your favorite genre: </label>
-            <input type="text" id="genre" name="genre">
-
-            <br>
-            <label for="playlist">Enter a name for your playlist: </label>
-            <input type="text" id="playlist" name="playlist">
-
-            <br>
-            <label for="limit">Enter the number of recommendations: </label>
-            <input type="number" id="limit" name="limit" min="1" max="20">
-
-            <br>
-            <input type="reset">
-            <input type="submit" value="Get Playlist">
-
-        </form>
         
+        <div class="container">
+            <h2>Make a Playlist</h2>
+            
+            <form action="/recommendations" method="post">
+                <label for="artist">Favorite Artist: </label>
+                <input type="text" id="artist" name="artist">
+
+                <br>
+                <label for="track">Favorite Song: </label>
+                <input type="text" id="track" name="track">
+                <label for="songArtist"> By: </label>
+                <input type="text" id="songArtist" name="songArtist">
+
+                <br>
+                <label for="genre">Favorite Genre: </label>
+                <input type="text" id="genre" name="genre">
+
+                <br>
+                <label for="playlist">Playlist Name: </label>
+                <input type="text" id="playlist" name="playlist">
+
+                <br>
+                <label for="limit">Number of Recommendations: </label>
+                <input type="number" id="limit" name="limit" min="1" max="20">
+
+                <br>
+                <input type="reset">
+                <input type="submit" value="Get Playlist">
+            </form>
+        </div>
     </body>
 </html>
