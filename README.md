@@ -9,7 +9,7 @@ Jeffrey ()
 This app uses the Spotify API to create public playlists of song recommendations based off a given song.
 
 ### Link:
-https://musicfyp-fifi.onrender.com/
+https://musicfyp.onrender.com
 
 ## API Links:
 Spotify API:
