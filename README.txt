@@ -1,20 +1,20 @@
-# 335FinalRahulAlexJeff
+335FinalRahulAlexJeff
 
-## Team members: 
+Team members: 
 Rahul Jasmin (rjasmin)
 Alexander Cook (acook126)
 Jeffrey (jjiang14)
 
-## Description:
+Description:
 This app uses the Spotify API to create public playlists of song recommendations based off a given song.
 
-### Link:
+Link:
 https://musicfyp.onrender.com
 
-## API Links:
+API Links:
 Spotify API:
 https://developer.spotify.com/documentation/web-api
 
 
-## YouTube Link:
+YouTube Link:
 
