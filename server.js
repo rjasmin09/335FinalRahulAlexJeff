@@ -34,6 +34,18 @@ app.get("/playlists", async (req, res) => {
     } 
 });
 
+app.post("/playlists", async (req ,res) => {
+    try {
+        await client.connect();
+        await deletePlaylists(client, databaseAndCollection);
+        res.render("playlists", { playlists: [] });
+    } catch (e) {
+        console.error(e);
+    } finally {
+        await client.close();
+    }
+});
+
 app.get("/playlist", async(req, res) => {
     try {
         await client.connect();
@@ -193,4 +205,10 @@ async function queryPlaylists(client, databaseAndCollection) {
         .collection(databaseAndCollection.collection)
         .find({}, { name: 1 })
         .toArray();
+}
+
+async function deletePlaylists(client, databaseAndCollection) {
+    return await client.db(databaseAndCollection.db)
+        .collection(databaseAndCollection.collection)
+        .deleteMany({});
 }
