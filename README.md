@@ -6,11 +6,15 @@ Alex Cook (acook126)
 Jeffrey ()
 
 ## Description:
-https://chit-chat-sd0z.onrender.com
-2 line description.
+This app uses the Spotify API to create public playlists of song recommendations based off a given song.
+
+### Link:
+https://musicfyp-fifi.onrender.com/
 
 ## API Links:
-nlp cloud
+Spotify API:
+https://developer.spotify.com/documentation/web-api
+
 
 ## YouTube Link:
 ...
