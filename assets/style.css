@@ -5,7 +5,7 @@ body {
 
 .top-bar {
     overflow: hidden;
-    background-color: #360;
+    background-color: black;
 }
 
 .top-bar a {
@@ -22,11 +22,11 @@ body {
     color: black;
 }
 
-.top-bar a:active {
+.top-bar a.active {
     background-color: #04AA6D;
     color: white;
 }
 
 h1 {
-    color: green;
+    color: #1DB954;
 }

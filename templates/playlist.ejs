@@ -8,7 +8,15 @@
     <title>Playlist</title>
 </head>
 <body>
-    <h1>Playlist: <%- playlist.name %></h1>
+    <div class="top-bar">
+        <a href="/">Home</a>
+        <a href="/recommendations">Get Song Recommendations</a>
+        <a href="/playlists">Public Playlists</a>
+    </div>
+    <div>
+        <h1>MusicFYP</h1>
+    </div>
+    <h2>Playlist: <%- playlist.name %></h2>
 
     <ul>
         <% for (let i = 0; i < playlist.songs.length; i++) { %>
