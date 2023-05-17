@@ -18,25 +18,24 @@
         </div>
         
         <div class="container">
-            <h2>Make a Playlist</h2>
+            <h2>Make a public playlist from a song</h2>
             
             <form action="/recommendations" method="post">
-                <label for="artist">Favorite Artist: </label>
-                <input type="text" id="artist" name="artist">
-
-                <br>
-                <label for="track">Favorite Song: </label>
-                <input type="text" id="track" name="track">
-                <label for="songArtist"> By: </label>
-                <input type="text" id="songArtist" name="songArtist">
-
-                <br>
-                <label for="genre">Favorite Genre: </label>
-                <input type="text" id="genre" name="genre">
-
+                
                 <br>
                 <label for="playlist">Playlist Name: </label>
-                <input type="text" id="playlist" name="playlist">
+                <input type="text" id="playlist" name="playlist" size="46px">
+                
+                <br>
+                <label for="track">Song Title: </label>
+                <input type="text" id="track" name="track" size="50px">
+                
+                <br>
+                <label for="artist">Artist: </label>
+                <input type="text" id="artist" name="artist" size="25px">
+
+                <label for="genre">Genre: </label>
+                <input type="text" id="genre" name="genre">
 
                 <br>
                 <label for="limit">Number of Recommendations: </label>

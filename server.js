@@ -83,7 +83,7 @@ app.post("/recommendations", async (req, res)  =>  {
         }
         let id_artist = artist1.data.artists.items[0].id
 
-        q = `track:${req.body.track}+artist:${req.body.songArtist}`
+        q = `track:${req.body.track}+artist:${req.body.artist}`
         type = "track"
         const track1 = await axios.get(`https://api.spotify.com/v1/search?q=${q}&type=${type}`, 
         {
