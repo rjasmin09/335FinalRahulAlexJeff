@@ -20,14 +20,10 @@
 
         Added the following songs to the <%- name %> Playlist: 
         <br>
-        1. <%- rec1 %>
-        <br>
-        2. <%- rec2 %>
-        <br>
-        3. <%- rec3 %>
-        <br>
-        4. <%- rec4 %>
-        <br>
-        5. <%- rec5 %>
+        <ul>
+            <% for (let i = 0; i < songs.length; i++) { %>
+                <li><%= songs[i] %></li>
+            <% } %>
+        </ul>     
     </body>
 </html>

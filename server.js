@@ -54,7 +54,8 @@ app.post("/recommendations", async (req, res)  =>  {
     const token = await getToken();
 
     try {
-        const limit = 5;
+        // const limit = 5;
+        let limit = req.body.limit;
         let q = `artist:${req.body.artist}`; 
         let type = "artist";
         const artist1 = await axios.get(`https://api.spotify.com/v1/search?q=${q}&type=${type}`, 
@@ -68,7 +69,7 @@ app.post("/recommendations", async (req, res)  =>  {
             res.render("invalid", {field: "artist"});
             return;
         }
-        id_artist = artist1.data.artists.items[0].id 
+        let id_artist = artist1.data.artists.items[0].id
 
         q = `track:${req.body.track}+artist:${req.body.songArtist}`
         type = "track"
@@ -83,7 +84,7 @@ app.post("/recommendations", async (req, res)  =>  {
             res.render("invalid", {field: "track"});
             return;
         }
-        id_track = track1.data.tracks.items[0].id;
+        let id_track = track1.data.tracks.items[0].id;
         
         const recommendations = await axios.get(`https://api.spotify.com/v1/recommendations?seed_artists=${id_artist}&seed_genres=${req.body.genre}&seed_tracks=${id_track}&limit=${limit}`, 
         {
@@ -97,8 +98,8 @@ app.post("/recommendations", async (req, res)  =>  {
         //     return;
         // }
 
-        recs = new Array(limit);
-        artists = new Array(limit);
+        let recs = new Array(limit);
+        let artists = new Array(limit);
         let rec = null;
         for (let i = 0; i < limit; i++){ 
             rec = recommendations.data.tracks[i];
@@ -106,23 +107,19 @@ app.post("/recommendations", async (req, res)  =>  {
             recs[i] = `${rec.name} by ${artists[i]}`;
         }
 
-        variables = { 
-            rec1: recs[0], 
-            rec2: recs[1],
-            rec3: recs[2],
-            rec4: recs[3],
-            rec5: recs[4],
-            name: req.body.playlist
+        let playList = { 
+            name: req.body.playlist,
+            songs: recs
         }
 
         try {
             await client.connect();
-            let playList = {
-                name: req.body.playlist,
-                songs: recs
-            };
+            // let playList = {
+            //     name: req.body.playlist,
+            //     songs: recs
+            // };
             await insertPlayList(client, databaseAndCollection, playList);
-            res.render("recommendations", variables);
+            res.render("recommendations", playList);
         } catch (e) {
             console.error(e);
         } finally {

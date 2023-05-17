@@ -16,7 +16,7 @@
         <div>
             <h1>MusicFYP</h1>
         </div>
-        
+
         <h2>Make a playlist of recommendations.</h2>
 
         <form action="/recommendations" method="post">
@@ -38,9 +38,12 @@
             <input type="text" id="playlist" name="playlist">
 
             <br>
+            <label for="limit">Enter the number of recommendations: </label>
+            <input type="number" id="limit" name="limit" min="1" max="20">
+
+            <br>
             <input type="reset">
             <input type="submit" value="Get Playlist">
-
 
         </form>
         
