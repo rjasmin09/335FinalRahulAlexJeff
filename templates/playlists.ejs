@@ -13,7 +13,7 @@
     <ul>
         <% for (let i = 0; i < playlists.length; i++) { %>
             <li>
-                <a href="http://localhost:3000/playlist?name=<%= playlists[i].name %>"><%= playlists[i].name %></a>
+                <a href="/playlist?name=<%= playlists[i].name %>"><%= playlists[i].name %></a>
             </li>
         <% } %>
     </ul>
