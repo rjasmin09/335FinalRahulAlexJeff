@@ -1,6 +1,8 @@
 body {
     font-family: "Poppins", sans-serif;
     width: 500px;
+    background-color: gray;
+    color: white;
 }
 
 .top-bar {
@@ -28,7 +30,7 @@ body {
 }
 
 h1 {
-    color: #1DB954;
+    color: #04AA6D;
 }
 
 .container {
@@ -36,6 +38,8 @@ h1 {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
     padding:  4px 20px 20px 20px;
     margin: 4px 4px 4px 4px;
+    background-color: white;
+    color: black;
 }
 
 .container h2 {
@@ -44,4 +48,12 @@ h1 {
 
 .container input {
     margin: 3px 3px 3px 0;
+}
+
+.playListLink {
+    color: black;
+}
+
+.playListLink:hover {
+    color: #04AA6D;
 }
